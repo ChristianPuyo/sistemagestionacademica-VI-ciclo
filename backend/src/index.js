@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const { database } = require("./db")
+const studentRouter = require("./routes/studentRouter")
 
 
 const server = express(); 
@@ -8,6 +9,7 @@ const server = express();
 server.use(morgan("dev")); // Muestra información de la petición
 server.use(express.json());// Transforma los datos a objetos de JS
 
+server.use("/student", studentRouter)
 
 
 const PORT = 3001;

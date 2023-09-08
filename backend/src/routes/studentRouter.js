@@ -14,3 +14,5 @@ studentRouter.post("/", async(req, res)=>{
     }
 })
 
+module.exports = studentRouter;
+
