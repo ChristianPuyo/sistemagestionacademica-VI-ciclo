@@ -28,7 +28,7 @@ const StudentModel = (database)=>{
             type:DataTypes.STRING,
             allowNull: false
         }
-    });
+    }, {timestamps:false});
 }
 
 module.exports = StudentModel;

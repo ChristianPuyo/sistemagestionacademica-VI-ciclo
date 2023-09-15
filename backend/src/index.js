@@ -19,7 +19,7 @@ const PORT = 3001;
 
 
 database
-    .sync({ force: true })
+    .sync({ alter: true })
     .then(() => {
         server.listen(PORT, () => {
             console.log(`Server listening on port ${PORT}`);
