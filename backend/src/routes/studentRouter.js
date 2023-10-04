@@ -1,5 +1,10 @@
 const { Router } = require("express");
-const { createStudent, getStudents, findStudent } = require("../controllers/studentControllers");
+const {
+    createStudent,
+    getStudents,
+    findStudent,
+    updateStudent,
+} = require("../controllers/studentControllers");
 
 
 const studentRouter = Router();
@@ -26,6 +31,17 @@ studentRouter.get("/", async(req, res)=>{
         
         res.status(200).json(student)
     } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+})
+
+studentRouter.put("/:id", async( req, res)=>{
+    const {id} = req.params;
+    const { firstName, lastName, gender, age, email } = req.body;
+    try {
+        const actualizarEstudiante = await updateStudent(id, firstName, lastName, gender, age, email );
+        res.status(200).json(actualizarEstudiante)
+    } catch(error){
         res.status(400).json({error: error.message})
     }
 })

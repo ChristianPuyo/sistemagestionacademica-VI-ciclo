@@ -21,9 +21,16 @@ const findStudent = async (lastName)=>{
     return result;
 }
 
+const updateStudent = async (id, firstName, lastName, gender, age, email) =>{
+    const findStudent = await Student.findByPk(id);
+    const studentUpdate = await findStudent.update({firstName, lastName, gender, age, email});
+    return studentUpdate;
+}
+
 
 module.exports = {
     createStudent,
     getStudents,
-    findStudent
+    findStudent,
+    updateStudent
 }

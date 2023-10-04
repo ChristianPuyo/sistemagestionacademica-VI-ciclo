@@ -9,8 +9,4 @@ StudentModel(database)
 
 console.log(database.models)
 
-
-
-
-
 module.exports = {database, ...database.models};
