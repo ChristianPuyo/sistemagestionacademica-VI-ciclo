@@ -4,6 +4,7 @@ const {
     getStudents,
     findStudent,
     updateStudent,
+    deleteStudent
 } = require("../controllers/studentControllers");
 
 
@@ -35,8 +36,24 @@ studentRouter.get("/", async(req, res)=>{
     }
 })
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 studentRouter.put("/:id", async( req, res)=>{
     const {id} = req.params;
+    // const id = req.params.id; esto es lo mismo que la linea 39
     const { firstName, lastName, gender, age, email } = req.body;
     try {
         const actualizarEstudiante = await updateStudent(id, firstName, lastName, gender, age, email );
@@ -45,6 +62,18 @@ studentRouter.put("/:id", async( req, res)=>{
         res.status(400).json({error: error.message})
     }
 })
+
+studentRouter.delete("/:id", async(req, res)=>{
+    const {id}= req.params;//esto sirve para obtener el parametro de la url y guardarlo en una variable llamada id
+    try {
+        const studentDelete = await deleteStudent(id);
+        res.status(200).json(studentDelete)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+})
+
+
 
 module.exports = studentRouter;
 

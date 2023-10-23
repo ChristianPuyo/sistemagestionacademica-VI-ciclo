@@ -27,10 +27,17 @@ const updateStudent = async (id, firstName, lastName, gender, age, email) =>{
     return studentUpdate;
 }
 
+const deleteStudent = async(id)=>{
+    const student = await Student.findByPk(id);
+    student.destroy()
+    return student;
+}
+
 
 module.exports = {
     createStudent,
     getStudents,
     findStudent,
-    updateStudent
+    updateStudent,
+    deleteStudent
 }
