@@ -1,12 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import PrimerComponente from './components/PrimerComponente/PrimerComponente';
-import FormCreateStudent from './components/FormCreateStudent/FormCreateStudent';
+import Users from './components/Users/Users';
+
 
 function App() {
   return (
     <div className="App">
-      <FormCreateStudent/>
+      
+      <Users/>
       
     </div>
   );
