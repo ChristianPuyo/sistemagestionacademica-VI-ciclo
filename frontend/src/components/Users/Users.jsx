@@ -4,6 +4,7 @@ import { getUsers } from "../../redux/actions/actions";
 
 const Users = ()=>{
     const dispatch = useDispatch();
+    const users = useSelector(state => state.users)
 
     useEffect(()=>{
         dispatch(getUsers())
