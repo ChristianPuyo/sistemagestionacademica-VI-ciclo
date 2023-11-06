@@ -1,4 +1,4 @@
-import { GET_USERS } from "../actions-types/actions-types";
+import { GET_USERS, GET_STUDENTS } from "../actions-types/actions-types";
 import axios from "axios"
 
 export const getUsers = ()=>{
@@ -10,3 +10,14 @@ export const getUsers = ()=>{
         }))
     }
 }
+
+export const getStudents = ()=>{
+    return async function(dispatch){
+        let response = await axios.get('http://localhost:3001/student')
+        return(dispatch({
+            type:GET_STUDENTS,
+            payload: response.data
+        }))
+    }
+}
+

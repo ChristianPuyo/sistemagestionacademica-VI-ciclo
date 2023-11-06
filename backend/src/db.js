@@ -3,7 +3,7 @@ const StudentModel = require("./models/Student")
 
 const database = new Sequelize(
     `postgres://postgres:admin@localhost:5432/gestionacademica`,
-    {logging: false}
+    {logging: false} 
 );
 
 StudentModel(database)

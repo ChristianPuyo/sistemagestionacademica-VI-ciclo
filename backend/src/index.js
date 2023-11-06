@@ -2,10 +2,12 @@ const express = require("express");
 const morgan = require("morgan");
 const { database } = require("./db")
 const studentRouter = require("./routes/studentRouter")
+const cors = require("cors")
 
 
 const server = express(); 
 
+server.use(cors()); //esto soluciona el problema de politicas de CORS. 
 server.use(morgan("dev")); // Muestra información de la petición
 server.use(express.json());// Transforma los datos a objetos de JS
 
