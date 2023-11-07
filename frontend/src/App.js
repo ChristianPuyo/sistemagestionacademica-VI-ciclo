@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Home from './components/Home/Home';
+import FormCreateStudent from './components/FormCreateStudent/FormCreateStudent';
 
 
 
@@ -9,6 +10,7 @@ function App() {
     <div className="App">
       
       <Home></Home>
+      <FormCreateStudent/>
       
     </div>
   );
