@@ -24,8 +24,8 @@ const Home = ()=>{
                 students.map(element =>{
                     return(
                         <div>
-                            <h3>Nombres:{element.firstName}</h3>
-                            <h3>Apellidos:{element.lastName}</h3>
+                            <h5>Nombres:{element.firstName}</h5>
+                            <h5>Apellidos:{element.lastName}</h5>
                             
                             <hr></hr>
                         </div>

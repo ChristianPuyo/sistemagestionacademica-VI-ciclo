@@ -12,6 +12,7 @@ const studentRouter = Router();
 
 studentRouter.post("/", async(req, res)=>{
     const {firstName, lastName, gender, age, email} = req.body;
+    console.log(req.body)
     try {
         const newStuden = await createStudent(firstName, lastName, gender, age, email)
         res.status(200).json(newStuden)

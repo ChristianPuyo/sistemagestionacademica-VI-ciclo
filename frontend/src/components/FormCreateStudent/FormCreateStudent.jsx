@@ -1,7 +1,10 @@
 import React from "react";
 import { useState } from "react";
+import {useDispatch} from 'react-redux'
+import { postStudent } from "../../redux/actions/actions";
 
 const FormCreateStudent = ()=>{
+    const dispatch = useDispatch();
 
     const [input, setInput] = useState({
         firstName: "",
@@ -13,7 +16,10 @@ const FormCreateStudent = ()=>{
 
     console.log("Firstname:",input.firstName)
     console.log("Lastname:",input.lastName)
-
+    console.log("Gender:", input.gender)
+    console.log("Age:", input.age)
+    console.log("Email:", input.email)
+    
     const handleInputChange = (e)=>{
             setInput({
                ...input,
@@ -22,8 +28,11 @@ const FormCreateStudent = ()=>{
             })
     }
 
-    const handleSubmit = ()=>{
-        alert("Hello")
+    const handleSubmit = (e)=>{
+        e.preventDefault();
+        dispatch(postStudent(input))
+        alert("Student created")
+
     }
 
     return(
@@ -37,6 +46,39 @@ const FormCreateStudent = ()=>{
                 placeholder='Firstname'
                 onChange={handleInputChange}
                 />
+
+                <input
+                type="text"
+                value={input.lastName}
+                name='lastName' 
+                placeholder='Lastname'
+                onChange={handleInputChange}
+                />
+                
+                <input
+                type="text"
+                value={input.gender}
+                name='gender' 
+                placeholder='Gender'
+                onChange={handleInputChange}
+                />
+
+                <input
+                type="text"
+                value={input.age}
+                name='age' 
+                placeholder='Age'
+                onChange={handleInputChange}
+                />
+
+                <input
+                type="text"
+                value={input.email}
+                name='email' 
+                placeholder='Email'
+                onChange={handleInputChange}
+                />
+                <button type="submit">Create Student</button> 
                 
             </form>
         </div>

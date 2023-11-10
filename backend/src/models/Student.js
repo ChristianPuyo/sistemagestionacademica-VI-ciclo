@@ -21,7 +21,7 @@ const StudentModel = (database)=>{
             allowNull: false
         },
         age:{
-            type:DataTypes.INTEGER,
+            type:DataTypes.STRING,
             allowNull: false
         },
         email:{
