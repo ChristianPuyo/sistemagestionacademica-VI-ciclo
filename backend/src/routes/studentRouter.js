@@ -4,7 +4,8 @@ const {
     getStudents,
     findStudent,
     updateStudent,
-    deleteStudent
+    deleteStudent,
+    findStudentById
 } = require("../controllers/studentControllers");
 
 
@@ -23,14 +24,32 @@ studentRouter.post("/", async(req, res)=>{
 
 studentRouter.get("/", async(req, res)=>{
     const {lastName} = req.query;
+    const { id } = req.params;
     let student;
     try {
         if(lastName){
-            student= await findStudent(lastName);//Esto busca a un estudiante
+            student= await findStudent(lastName);//Esto busca a un estudiante por el apellido
+        }else if(id){
+            student = await findStudentById(id);// Trae a un estudiante por su Id
         }else{
             student = await getStudents(); //Esto trae a todos
         }
         
+        res.status(200).json(student)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+})
+
+
+studentRouter.get("/:id", async(req, res)=>{
+    
+    const { id } = req.params;
+    let student;
+    try {
+        if(id){
+            student = await findStudentById(id);// Trae a un estudiante por su Id
+        }
         res.status(200).json(student)
     } catch (error) {
         res.status(400).json({error: error.message})

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getStudents } from "../../redux/actions/actions";
 
 const Home = ()=>{
@@ -26,7 +27,7 @@ const Home = ()=>{
                         <div>
                             <h5>Nombres:{element.firstName}</h5>
                             <h5>Apellidos:{element.lastName}</h5>
-                            
+                            <Link to={`/updatestudent/${element.id}`}>Update</Link>
                             <hr></hr>
                         </div>
                         
