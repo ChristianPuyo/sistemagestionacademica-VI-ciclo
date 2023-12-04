@@ -1,10 +1,22 @@
 import React from "react";
 import { useState } from "react";
 import {useDispatch} from 'react-redux'
-import { postStudent } from "../../redux/actions/actions";
+import { getStudentById, postStudent } from "../../redux/actions/actions";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+
 
 const FormUpdateStudent = ()=>{
+    const studentById = useSelector(state => state.studentById)
+    console.log("Este es el estudiante por ID:",studentById)
     const dispatch = useDispatch();
+    let {id} = useParams();
+    console.log("Esto es el ID:"+id)
+
+    useEffect(()=>{
+        dispatch(getStudentById(id))
+    },[id])
 
     const [input, setInput] = useState({
         firstName: "",
@@ -13,6 +25,13 @@ const FormUpdateStudent = ()=>{
         age: "",
         email:""
     })
+
+    useEffect(()=>{
+        // studentById && setInput(studentById)
+        if(studentById){
+            setInput(studentById)
+        }
+    },[studentById])
 
     console.log("Firstname:",input.firstName)
     console.log("Lastname:",input.lastName)
@@ -78,7 +97,7 @@ const FormUpdateStudent = ()=>{
                 placeholder='Email'
                 onChange={handleInputChange}
                 />
-                <button type="submit">Create Student</button> 
+                <button type="submit">Save Student</button> 
                 
             </form>
         </div>

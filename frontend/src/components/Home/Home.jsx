@@ -22,12 +22,13 @@ const Home = ()=>{
             <h1>Students</h1>
                     
             {
-                students.map(element =>{
+                students.map(el =>{
                     return(
                         <div>
-                            <h5>Nombres:{element.firstName}</h5>
-                            <h5>Apellidos:{element.lastName}</h5>
-                            <Link to={`/updatestudent/${element.id}`}>Update</Link>
+                            <h5>Nombres:{el.firstName}</h5>
+                            <h5>Apellidos:{el.lastName}</h5>
+                            <h5>ID:{el.id}</h5>
+                            <Link to={`/updatestudent/${el.id}`}>Update</Link>
                             <hr></hr>
                         </div>
                         

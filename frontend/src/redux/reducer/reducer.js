@@ -1,8 +1,12 @@
-import { GET_STUDENTS, GET_USERS, POST_STUDENT } from "../actions-types/actions-types";
+import { GET_STUDENTS, 
+         GET_USERS, 
+         POST_STUDENT, 
+         GET_STUDENT_BY_ID } from "../actions-types/actions-types";
 
 const initialState = {
     students: [],
-    users:[]
+    users:[],
+    studentById:{}
 }
 
 function reducer(state = initialState, action) {
@@ -18,6 +22,11 @@ function reducer(state = initialState, action) {
             return{
                 ...state,
                 students: action.payload
+            }
+        case GET_STUDENT_BY_ID:
+            return{
+                ...state,
+                studentById: action.payload
             }
         case POST_STUDENT:
             return{
